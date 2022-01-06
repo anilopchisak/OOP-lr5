@@ -47,13 +47,10 @@ public:
 };
 class Inheritor : public Base
 {
-private:
-	int x;
 public:
 	Inheritor()
 	{
 		printf("Inheritor()\n");
-		x = 0;
 	}
 	Inheritor(int _x) : Base(_x)
 	{
@@ -78,7 +75,7 @@ public:
 	}
 };
 
-class Base2
+class Base2 //без виртуального деструктора
 {
 protected:
 	int x;
@@ -116,16 +113,13 @@ public:
 		method();
 		method_2();
 	}
-};
+}; 
 class Inheritor2 : public Base2
 {
-private:
-	int x;
 public:
 	Inheritor2()
 	{
 		printf("Inheritor2()\n");
-		x = 0;
 	}
 	Inheritor2(int _x) : Base2(_x)
 	{
@@ -164,9 +158,6 @@ int main()
 	delete base; printf("\n\n");	//для вызова деструктора компилятор использует раннее связывание.
 									//Деструктор базового класса не может вызвать деструктор производного, 
 									//потому что он о нем ничего не знает.
-
-
-
 
 	return 0;
 }
